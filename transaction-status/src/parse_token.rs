@@ -372,6 +372,28 @@ pub fn parse_token(
                 info: value,
             })
         }
+        TokenInstruction::ClawbackChecked { amount, decimals } => {
+            check_num_token_accounts(&instruction.accounts, 4)?;
+            let mut value = json!({
+                "source": account_keys[instruction.accounts[0] as usize].to_string(),
+                "mint": account_keys[instruction.accounts[1] as usize].to_string(),
+                "destination": account_keys[instruction.accounts[2] as usize].to_string(),
+                "tokenAmount": token_amount_to_ui_amount(amount, decimals),
+            });
+            let mut map = value.as_object_mut().unwrap();
+            parse_signers(
+                &mut map,
+                3,
+                account_keys,
+                &instruction.accounts,
+                "freezeAuthority",
+                "multisigFreezeAuthority",
+            );
+            Ok(ParsedInstructionEnum {
+                instruction_type: "clawbackChecked".to_string(),
+                info: value,
+            })
+        }
     }
 }
 
@@ -1420,6 +1442,43 @@ mod test {
         assert!(parse_token(&compiled_instruction, &keys[0..2]).is_err());
         compiled_instruction.accounts =
             compiled_instruction.accounts[0..compiled_instruction.accounts.len() - 1].to_vec();
+        assert!(parse_token(&compiled_instruction, &keys).is_err());
+
+        // Test ClawbackChecked, incl multisig
+        let transfer_ix = clawback(
+            &spl_token_v2_0::id(),
+            &convert_pubkey(keys[1]),
+            &convert_pubkey(keys[2]),
+            &convert_pubkey(keys[3]),
+            &convert_pubkey(keys[0]),
+            &[],
+            42,
+            2,
+        )
+        .unwrap();
+        let message = Message::new(&[transfer_ix], None);
+        let mut compiled_instruction = convert_compiled_instruction(&message.instructions[0]);
+        assert!(parse_token(&compiled_instruction, &keys[0..3]).is_err());
+        compiled_instruction.accounts =
+            compiled_instruction.accounts[0..compiled_instruction.accounts.len() - 1].to_vec();
+        assert!(parse_token(&compiled_instruction, &keys).is_err());
+
+        let transfer_ix = clawback(
+            &spl_token_v2_0::id(),
+            &convert_pubkey(keys[2]),
+            &convert_pubkey(keys[3]),
+            &convert_pubkey(keys[4]),
+            &convert_pubkey(keys[5]),
+            &[&convert_pubkey(keys[0]), &convert_pubkey(keys[1])],
+            42,
+            2,
+        )
+        .unwrap();
+        let message = Message::new(&[transfer_ix], None);
+        let mut compiled_instruction = convert_compiled_instruction(&message.instructions[0]);
+        assert!(parse_token(&compiled_instruction, &keys[0..5]).is_err());
+        compiled_instruction.accounts =
+            compiled_instruction.accounts[0..compiled_instruction.accounts.len() - 3].to_vec();
         assert!(parse_token(&compiled_instruction, &keys).is_err());
     }
 }

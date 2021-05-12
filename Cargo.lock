@@ -4467,9 +4467,9 @@ dependencies = [
 
 [[package]]
 name = "solana-frozen-abi"
-version = "1.6.4"
+version = "1.6.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f81ac3925c8995d935d3af27390cf7b748a81837a29feb75a00e115f40dae6dc"
+checksum = "bb1c80ff6fb5ee106c05fe3f574e9c40090294706a6cac1febab19e23b3ec998"
 dependencies = [
  "bs58",
  "bv",
@@ -4480,8 +4480,8 @@ dependencies = [
  "serde",
  "serde_derive",
  "sha2 0.9.2",
- "solana-frozen-abi-macro 1.6.4",
- "solana-logger 1.6.4",
+ "solana-frozen-abi-macro 1.6.8",
+ "solana-logger 1.6.8",
  "thiserror",
 ]
 
@@ -4505,9 +4505,9 @@ dependencies = [
 
 [[package]]
 name = "solana-frozen-abi-macro"
-version = "1.6.4"
+version = "1.6.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ae448159038e470f3b2dd1ab0d219246211f940a10bf1e656a02cb5c2d897437"
+checksum = "d4e5f36c3c9761b1006fdbc4db3c998dae161ea9b1b97afc87efe863ec5b2c12"
 dependencies = [
  "lazy_static",
  "proc-macro2 1.0.24",
@@ -4749,9 +4749,9 @@ dependencies = [
 
 [[package]]
 name = "solana-logger"
-version = "1.6.4"
+version = "1.6.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7fa7bddd7b89c26c6e3ef4af9b47d6bc8d60888559affb5160f5ade18c0cd058"
+checksum = "11789531b04603fe0ea25be5f95905de306ec39592b97fc10485a42bdd356b48"
 dependencies = [
  "env_logger 0.8.3",
  "lazy_static",
@@ -4914,11 +4914,12 @@ dependencies = [
 
 [[package]]
 name = "solana-program"
-version = "1.6.4"
+version = "1.6.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "231bf4cd42997b6f34e7c74a1449e8a1e8816fd83662fc3a5a0922da48fc667b"
+checksum = "c0a176f7fe3200f89177694be37b22b7a2ce91f7d7d4abd1de0cd5749fa5582e"
 dependencies = [
  "bincode",
+ "blake3",
  "borsh",
  "borsh-derive",
  "bs58",
@@ -4937,10 +4938,10 @@ dependencies = [
  "serde_bytes",
  "serde_derive",
  "sha2 0.9.2",
- "solana-frozen-abi 1.6.4",
- "solana-frozen-abi-macro 1.6.4",
- "solana-logger 1.6.4",
- "solana-sdk-macro 1.6.4",
+ "solana-frozen-abi 1.6.8",
+ "solana-frozen-abi-macro 1.6.8",
+ "solana-logger 1.6.8",
+ "solana-sdk-macro 1.6.8",
  "thiserror",
 ]
 
@@ -5142,9 +5143,9 @@ dependencies = [
 
 [[package]]
 name = "solana-sdk-macro"
-version = "1.6.4"
+version = "1.6.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3c805f1e32677f8ec0cc0b2f470833a0d5ab0922f068e52be3a4a93b468c9c70"
+checksum = "bf5c3ae3b0c271b9dfc9e00d89902fbf8c6ad081a5b1cd855cc599a26f114dfd"
 dependencies = [
  "bs58",
  "proc-macro2 1.0.24",
@@ -5505,33 +5506,30 @@ checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
 [[package]]
 name = "spl-associated-token-account"
 version = "1.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4adc47eebe5d2b662cbaaba1843719c28a67e5ec5d0460bc3ca60900a51f74e2"
+source = "git+https://github.com/CriesofCarrots/solana-program-library?branch=clawback#6d2bb3212a8e0ae5af5987bb9ef431db60e2db31"
 dependencies = [
- "solana-program 1.6.4",
+ "solana-program 1.6.8",
  "spl-token",
 ]
 
 [[package]]
 name = "spl-memo"
 version = "3.0.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bd0dc6f70db6bacea7ff25870b016a65ba1d1b6013536f08e4fd79a8f9005325"
+source = "git+https://github.com/CriesofCarrots/solana-program-library?branch=clawback#6d2bb3212a8e0ae5af5987bb9ef431db60e2db31"
 dependencies = [
- "solana-program 1.6.4",
+ "solana-program 1.6.8",
 ]
 
 [[package]]
 name = "spl-token"
 version = "3.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b795e50d15dfd35aa5460b80a16414503a322be115a417a43db987c5824c6798"
+source = "git+https://github.com/CriesofCarrots/solana-program-library?branch=clawback#6d2bb3212a8e0ae5af5987bb9ef431db60e2db31"
 dependencies = [
  "arrayref",
  "num-derive",
  "num-traits",
  "num_enum",
- "solana-program 1.6.4",
+ "solana-program 1.6.8",
  "thiserror",
 ]
 
