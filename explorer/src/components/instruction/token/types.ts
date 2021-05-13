@@ -166,6 +166,16 @@ const BurnChecked = type({
   tokenAmount: TokenAmountUi,
 });
 
+const ClawbackChecked = type({
+  source: PublicKeyFromString,
+  mint: PublicKeyFromString,
+  destination: PublicKeyFromString,
+  freezeAuthority: optional(PublicKeyFromString),
+  multisigFreezeAuthority: optional(PublicKeyFromString),
+  signers: optional(array(PublicKeyFromString)),
+  tokenAmount: TokenAmountUi,
+});
+
 export type TokenInstructionType = Infer<typeof TokenInstructionType>;
 export const TokenInstructionType = enums([
   "initializeMint",
@@ -188,6 +198,7 @@ export const TokenInstructionType = enums([
   "approveChecked",
   "mintToChecked",
   "burnChecked",
+  "clawbackChecked",
 ]);
 
 export const IX_STRUCTS = {
@@ -211,6 +222,7 @@ export const IX_STRUCTS = {
   approveChecked: ApproveChecked,
   mintToChecked: MintToChecked,
   burnChecked: BurnChecked,
+  clawbackChecked: ClawbackChecked,
 };
 
 export const IX_TITLES = {
@@ -234,4 +246,5 @@ export const IX_TITLES = {
   approveChecked: "Approve (Checked)",
   mintToChecked: "Mint To (Checked)",
   burnChecked: "Burn (Checked)",
+  clawbackChecked: "Clawback (Checked)",
 };
