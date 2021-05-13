@@ -23,7 +23,7 @@ solana-config-program = { path = "../programs/config", version = "=1.7.0" }
 solana-sdk = { path = "../sdk", version = "=1.7.0" }
 solana-stake-program = { path = "../programs/stake", version = "=1.7.0" }
 solana-vote-program = { path = "../programs/vote", version = "=1.7.0" }
-spl-token-v2-0 = { package = "spl-token", version = "=3.1.0", features = ["no-entrypoint"], git = "https://github.com/CriesofCarrots/solana-program-library", branch = "clawback" }
+spl-token-v2-0 = { package = "spl-token", version = "=3.1.0", features = ["no-entrypoint"], git = "https://github.com/solana-labs/solana-program-library", branch = "clawback" }
 thiserror = "1.0"
 zstd = "0.5.1"
 

@@ -5506,7 +5506,7 @@ checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
 [[package]]
 name = "spl-associated-token-account"
 version = "1.0.2"
-source = "git+https://github.com/CriesofCarrots/solana-program-library?branch=clawback"
+source = "git+https://github.com/solana-labs/solana-program-library?branch=clawback"
 dependencies = [
  "solana-program 1.6.8",
  "spl-token",
@@ -5515,7 +5515,7 @@ dependencies = [
 [[package]]
 name = "spl-memo"
 version = "3.0.1"
-source = "git+https://github.com/CriesofCarrots/solana-program-library?branch=clawback"
+source = "git+https://github.com/solana-labs/solana-program-library?branch=clawback"
 dependencies = [
  "solana-program 1.6.8",
 ]
@@ -5523,7 +5523,7 @@ dependencies = [
 [[package]]
 name = "spl-token"
 version = "3.1.0"
-source = "git+https://github.com/CriesofCarrots/solana-program-library?branch=clawback"
+source = "git+https://github.com/solana-labs/solana-program-library?branch=clawback"
 dependencies = [
  "arrayref",
  "num-derive",
